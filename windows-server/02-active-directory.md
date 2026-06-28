@@ -1,87 +1,71 @@
-Lab 2 — Active Directory, Domain Controller, Users and Groups
+# Lab 2 — Active Directory, Domain Controller, Users and Groups
 
-Date: June 2026
+**Date:** June 2026
+**Platform:** Windows Server 2022 Standard Evaluation, UTM on macOS (M3)
 
-Platform: Windows Server 2022 Standard Evaluation, UTM on macOS (M3)
+---
 
-
-Objective
+## Objective
 
 Install Active Directory Domain Services, promote the server to a Domain Controller, and configure Organisational Units, user accounts, and security groups.
 
+---
 
-Key Concepts
+## Key Concepts
 
-Domain vs Workgroup
+| Workgroup | Domain |
+|---|---|
+| No central control | Centralised control via Domain Controller |
+| Each PC manages its own accounts | One account works on all machines |
+| Home networks | Used by every enterprise |
 
-A workgroup is a peer-to-peer arrangement where each computer manages its own accounts independently. A domain places all computers and users under centralised control via a Domain Controller. Every enterprise environment uses a domain.
+---
 
-Domain Controller
+## Steps
 
-The server running Active Directory. All authentication requests on the network pass through it. It verifies credentials, applies policies, and controls access to resources.
+### 1. Install AD DS Role
 
-Organisational Unit (OU)
+Installed Active Directory Domain Services via Server Manager.
 
-A container within Active Directory used to organise users and computers logically, typically by department. Policies and permissions can be applied at the OU level.
+### 2. Promote to Domain Controller
 
+Selected Add a new forest, set root domain name to mycompany.local. Server restarted automatically. Login screen showed MYCOMPANY\Administrator confirming AD is active.
 
-Steps
+### 3. Create Organisational Unit
 
-1. Install AD DS Role
+Right clicked mycompany.local > New > Organizational Unit, named it IT Department.
 
-Installed Active Directory Domain Services via Server Manager. Added required features when prompted.
+### 4. Create User Account
 
-2. Promote to Domain Controller
+| Field | Value |
+|---|---|
+| First Name | John |
+| Last Name | Smith |
+| Logon Name | jsmith |
+| Password Never Expires | Yes |
 
+### 5. Create Security Group
 
-Clicked the flag notification in Server Manager
-Selected "Promote this server to a domain controller"
-Selected "Add a new forest"
-Set root domain name: mycompany.local
-Configured DSRM password
-Completed wizard and allowed the server to restart
+| Field | Value |
+|---|---|
+| Group Name | IT Staff |
+| Scope | Global |
+| Type | Security |
 
+### 6. Add User to Group
 
-After restart, the login screen displayed MYCOMPANY\Administrator, confirming Active Directory is active.
+Opened IT Staff > Members tab > Add > searched jsmith > confirmed.
 
-3. Create Organisational Unit
+![Active Directory](../screenshots/04-active-directory-ou.png)
 
+---
 
-Opened Tools > Active Directory Users and Computers
-Right clicked mycompany.local > New > Organizational Unit
-Named it: IT Department
+## What I Learned
 
+The difference between a workgroup and a domain becomes clear when you actually build one. Organisational Units make large-scale user management practical — without them, administering hundreds of accounts in a flat structure would be unworkable.
 
-4. Create User Account
+## Challenges
 
-Right clicked IT Department > New > User and configured:
-
-FieldValueFirst NameJohnLast NameSmithLogon NamejsmithPassword Never ExpiresYes
-
-5. Create Security Group
-
-Right clicked IT Department > New > Group and configured:
-
-FieldValueGroup NameIT StaffScopeGlobalTypeSecurity
-
-6. Add User to Group
-
-Opened IT Staff group > Members tab > Add > searched for jsmith > confirmed and saved.
-
-Screenshot
-
-Show Image
-
-
-Outcome
-
-Domain controller operational with domain mycompany.local. IT Department OU contains user jsmith and security group IT Staff. John Smith is a member of IT Staff.
-
-
-What I Learned
-
-The difference between a workgroup and a domain becomes very clear when you actually build one. Setting up the Domain Controller and seeing the login screen change to show the domain name made the concept real. Organisational Units make large-scale user management manageable — without them, administering hundreds of accounts in a flat structure would be unworkable.
-
-Challenges
-
-IssueResolutionServer restarted mid-promotionExpected behaviour — AD DS promotion requires a restart
+| Issue | Resolution |
+|---|---|
+| Server restarted mid-promotion | Expected — AD DS promotion requires a restart |
