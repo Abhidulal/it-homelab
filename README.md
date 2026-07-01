@@ -17,6 +17,7 @@ A collection of hands-on IT labs documenting real-world system administration sk
 | [Lab 2](windows-server/02-active-directory.md) | Active Directory, Domain Controller, Users and Groups |
 | [Lab 3](windows-server/03-group-policy.md) | Group Policy Object (GPO) configuration |
 | [Lab 4](windows-server/04-domain-administration.md) | Domain Administration, User Lifecycle, Password and Lockout Policies |
+| [Lab 5](windows-server/05-ntfs-permissions.md) | NTFS Permissions and Shared Folders |
 
 ## Skills Covered
 
