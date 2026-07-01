@@ -89,7 +89,7 @@ Used the Effective Access tab to verify mwilliams (HR Staff member) has correct 
 
 Result: mwilliams has Read, List, Write, Create files and folders — confirming Modify access is working. Full Control and Delete subfolders are blocked as expected.
 
-![Effective Access HR](../screenshots/15-effective-access-hr.png)
+![Effective Access HR](../screenshots/15-effective-access-hr.png..png)
 
 ---
 
